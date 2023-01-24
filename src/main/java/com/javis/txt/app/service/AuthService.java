@@ -8,4 +8,6 @@ public interface AuthService {
 
     AuthInfoDTO getAdminAuthInfo(String id, String password);
 
+    boolean setAdminAuthInfo(String id, String password);
+
 }

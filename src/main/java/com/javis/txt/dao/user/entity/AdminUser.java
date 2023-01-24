@@ -4,15 +4,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
 @Entity
 @Table(name = "AdminUser")
+@NoArgsConstructor
 public class AdminUser {
 
     @Id
@@ -22,4 +21,8 @@ public class AdminUser {
     @Column(name = "password", nullable = false)
     private String password = "";
 
+    public AdminUser(String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
 }

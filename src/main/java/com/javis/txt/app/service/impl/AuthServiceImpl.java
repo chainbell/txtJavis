@@ -17,26 +17,45 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public AuthInfoDTO getAdminAuthInfo(String id, String password) {
 
+        AuthInfoDTO authInfoDTO = null;
+
         // 1. id, password 암호화 처리
-        AdminUserVO adminUser = AdminUserVO.builder().id(id).password(password).build();
+        AdminUserVO adminUserVO = AdminUserVO.builder().id(id).password(password).build();
 
         // 2. rdb 정보 조회
         try{
-            AdminUser info = adminUserRepository.findByIdAndPassword(adminUser.getId(), adminUser.getPassword());
+            AdminUser info = adminUserRepository.findByIdAndPassword(adminUserVO.getId(), adminUserVO.getPassword());
 
             // 2-1. 없으면 실패
             if(info == null){
-
+                authInfoDTO = new AuthInfoDTO("","");
             }
             // 2-2. 있으면 성공 -> 정보 세팅
             else{
-
+                authInfoDTO = new AuthInfoDTO("", id);
             }
         }
         catch (Exception e){
             e.printStackTrace();
+            authInfoDTO = new AuthInfoDTO("","");
         }
 
-        return null;
+        return authInfoDTO;
+    }
+
+    @Override
+    public boolean setAdminAuthInfo(String id, String password) {
+
+        AdminUserVO adminUserVO = AdminUserVO.builder().id(id).password(password).build();
+
+        try{
+            AdminUser adminUser = new AdminUser(adminUserVO.getId(), adminUserVO.getPassword());
+            adminUserRepository.save(adminUser);
+        }
+        catch (Exception e){
+            return false;
+        }
+
+        return true;
     }
 }
