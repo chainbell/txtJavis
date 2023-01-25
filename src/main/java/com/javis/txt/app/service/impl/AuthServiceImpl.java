@@ -1,18 +1,25 @@
 package com.javis.txt.app.service.impl;
 
 import com.javis.txt.app.service.AuthService;
+import com.javis.txt.common.util.Aes256Encryptor;
 import com.javis.txt.dao.user.entity.AdminUser;
 import com.javis.txt.dao.user.repository.AdminUserRepository;
 import com.javis.txt.domain.user.admin.AdminUserVO;
 import com.javis.txt.dto.auth.AuthInfoDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class AuthServiceImpl implements AuthService {
 
     @Autowired
     AdminUserRepository adminUserRepository;
+
+    @Value("${aes.encrypt.key}")
+    String aesKey;
 
     @Override
     public AuthInfoDTO getAdminAuthInfo(String id, String password) {
@@ -28,14 +35,18 @@ public class AuthServiceImpl implements AuthService {
 
             // 2-1. 없으면 실패
             if(info == null){
+                log.info("2-1. 없으면 실패");
                 authInfoDTO = new AuthInfoDTO("","");
             }
             // 2-2. 있으면 성공 -> 정보 세팅
             else{
-                authInfoDTO = new AuthInfoDTO("", id);
+                log.info("2-2. 있으면 성공 -> 정보 세팅");
+                Aes256Encryptor aes256Encryptor = new Aes256Encryptor();
+                authInfoDTO = new AuthInfoDTO(aes256Encryptor.encrypt(id, aesKey), id);
             }
         }
         catch (Exception e){
+            log.error("error");
             e.printStackTrace();
             authInfoDTO = new AuthInfoDTO("","");
         }

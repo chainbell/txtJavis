@@ -1,5 +1,7 @@
 package com.javis.txt.common.util;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -8,12 +10,11 @@ import java.util.Base64;
 public class Aes256Encryptor {
 
     public static String alg = "AES/CBC/PKCS5Padding";
-    private static final String key = "01234567890123456789012345678901";
-    private static final String iv = key.substring(0, 16); // 16byte
 
-    public static String encrypt(String text) throws Exception {
+    public String encrypt(String text, String encryptKey) throws Exception {
+        String iv = encryptKey.substring(0, 16);
         Cipher cipher = Cipher.getInstance(alg);
-        SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
+        SecretKeySpec keySpec = new SecretKeySpec(encryptKey.getBytes(), "AES");
         IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
         cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivParamSpec);
 
@@ -21,9 +22,10 @@ public class Aes256Encryptor {
         return Base64.getEncoder().encodeToString(encrypted);
     }
 
-    public static String decrypt(String cipherText) throws Exception {
+    public String decrypt(String cipherText, String encryptKey) throws Exception {
+        String iv = encryptKey.substring(0, 16);
         Cipher cipher = Cipher.getInstance(alg);
-        SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(), "AES");
+        SecretKeySpec keySpec = new SecretKeySpec(encryptKey.getBytes(), "AES");
         IvParameterSpec ivParamSpec = new IvParameterSpec(iv.getBytes());
         cipher.init(Cipher.DECRYPT_MODE, keySpec, ivParamSpec);
 
