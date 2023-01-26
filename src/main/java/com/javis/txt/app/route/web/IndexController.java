@@ -22,7 +22,6 @@ public class IndexController {
     public String main(AuthInfoDTO authInfoDTO){
         log.info("IndexController main 페이지 진입");
         log.info(authInfoDTO.toString());
-
         return "html/main";
     }
 
