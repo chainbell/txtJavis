@@ -36,19 +36,19 @@ public class AuthServiceImpl implements AuthService {
             // 2-1. 없으면 실패
             if(info == null){
                 log.info("2-1. 없으면 실패");
-                authInfoDTO = new AuthInfoDTO("","");
+                authInfoDTO = new AuthInfoDTO(false,"","");
             }
             // 2-2. 있으면 성공 -> 정보 세팅
             else{
                 log.info("2-2. 있으면 성공 -> 정보 세팅");
                 Aes256Encryptor aes256Encryptor = new Aes256Encryptor();
-                authInfoDTO = new AuthInfoDTO(aes256Encryptor.encrypt(id, aesKey), id);
+                authInfoDTO = new AuthInfoDTO(true, aes256Encryptor.encrypt(id, aesKey), id);
             }
         }
         catch (Exception e){
             log.error("error");
             e.printStackTrace();
-            authInfoDTO = new AuthInfoDTO("","");
+            authInfoDTO = new AuthInfoDTO(false,"","");
         }
 
         return authInfoDTO;

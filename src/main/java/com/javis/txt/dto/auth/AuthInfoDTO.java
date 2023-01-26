@@ -11,6 +11,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class AuthInfoDTO {
 
+    boolean status;
+
     String authKey;
 
     String loginName;

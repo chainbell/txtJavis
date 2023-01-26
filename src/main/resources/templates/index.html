@@ -47,7 +47,32 @@
                 axios
                     .get("/auth/admin/login", {params: param})
                     .then(function (result) {
-                        console.log(result)
+                        if (result.data.status) {
+                            var f = document.createElement("form");
+                            f.setAttribute("method", "post");
+                            f.setAttribute("action", "/main");
+                            document.body.appendChild(f);
+
+                            var statusInput = document.createElement("input");
+                            statusInput.setAttribute("type", "hidden");
+                            statusInput.setAttribute("name", "status");
+                            statusInput.setAttribute("value", result.data.status);
+                            f.appendChild(statusInput);
+
+                            var authKeyInput = document.createElement("input");
+                            authKeyInput.setAttribute("type", "hidden");
+                            authKeyInput.setAttribute("name", "authKey");
+                            authKeyInput.setAttribute("value", result.data.authKey);
+                            f.appendChild(authKeyInput);
+
+                            var loginNameInput = document.createElement("input");
+                            loginNameInput.setAttribute("type", "hidden");
+                            loginNameInput.setAttribute("name", "loginName");
+                            loginNameInput.setAttribute("value", result.data.loginName);
+                            f.appendChild(loginNameInput);
+
+                            f.submit(); // form 태그 서브밋 실행-
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
