@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--라이브러리 참조 : Thymeleaf & Thymeleaf Layout -->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<!--공통 JS / CSS 영역을 관리하는 환경 영역-->
+<th:block th:replace="~{fragments/common/head :: HeadFragment}"></th:block>
+
+<body>
+
+<div class="main-container">
+    <div class="left-layout">
+        <th:block th:replace="~{fragments/menu :: MenuFragment}"></th:block>
+
+    </div>
+    <div class="right-layout">
+        <th:block layout:fragment="Content"></th:block>
+    </div>
+</div>
+
+</body>
+
+<style>
+    .main-container {
+        width: 1920px;
+        height: 1080px;
+    }
+
+    .left-layout {
+        width: 10%;
+        height: 100%;
+        background-color: azure;
+        float: left;
+    }
+
+    .right-layout {
+        width: 88%;
+        height: 100%;
+        background-color: beige;
+        float: left;
+    }
+
+</style>
+
+</html>

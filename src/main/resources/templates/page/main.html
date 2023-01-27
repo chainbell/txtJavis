@@ -1,38 +1,14 @@
 <!DOCTYPE html>
-<html lagn="en"
+<!-- Default Layout Import-->
+<html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-<div class="main-container">
-    <div class="left-layout">
-        <th:block th:replace="fragment/common/menu :: menuFragment"></th:block>
-    </div>
-    <div class="right-layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/menuLayout}"
+      layout:fragment="Content">
 
-    </div>
+<body>
+<div>
+    <h1>Content 영역입니다.</h1>
 </div>
 </body>
-<style>
-.main-container{
-    width: 1920px;
-    height: 1080px;
-}
-
-.left-layout{
-    width: 10%;
-    height: 100%;
-    background-color: azure;
-    float: left;
-}
-.right-layout{
-    width: 88%;
-    height: 100%;
-    background-color: beige;
-    float: left;
-}
-
-</style>
 </html>
