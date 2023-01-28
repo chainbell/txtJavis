@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Thymeleaf 선언 / FooterFragment 임을 선언-->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="ChatFragment">
+<div class="content-container">
+
+    <div>
+        <form method="post">
+            <input type="text">
+            <input type="submit" value="발송">
+        </form>
+    </div>
+
+    <div class="left-chat">
+        왼쪽 텍스트
+    </div>
+    <div class="right-chat">
+        오른쪽 텍스트
+    </div>
+
+</div>
+
+<style>
+    .content-container{
+        width: 100%;
+        height: 100%;
+    }
+
+    .left-chat{
+        text-align:left;
+    }
+
+    .right-chat{
+        text-align:right;
+    }
+
+</style>
+
+</html>

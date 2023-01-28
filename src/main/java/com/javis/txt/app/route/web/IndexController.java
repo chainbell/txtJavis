@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
@@ -16,6 +17,7 @@ public class IndexController {
     public String index() {
         log.info("IndexController index 페이지 진입");
         return "index";
+
     }
 
     @PostMapping("/main")

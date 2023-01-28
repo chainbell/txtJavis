@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- Default Layout Import-->
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/menuLayout}"
+      layout:fragment="Content">
+
+<body>
+
+<th:block th:replace="fragments/contents/chat :: ChatFragment"></th:block>
+
+</body>
+</html>
