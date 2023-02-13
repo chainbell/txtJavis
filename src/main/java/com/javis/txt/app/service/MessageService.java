@@ -7,5 +7,5 @@ public interface MessageService {
     List getMessge(String authKey);
 
     boolean setMessage(String authKey, String message);
-
+    
 }
