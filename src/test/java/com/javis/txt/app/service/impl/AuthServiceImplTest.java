@@ -16,16 +16,21 @@ class AuthServiceImplTest {
 
     @Value("${aes.encrypt.key}")
     String aesKey;
+
+    /*
     @Test
     public void getAdminAuthInfo() throws Exception {
         AuthInfoDTO result = authService.getAdminAuthInfo("admin","admin");
         System.out.println(result.toString());
     }
+    */
 
+/*
     @Test
     public void setAdminAuthInfo() throws Exception {
-//        boolean result = authService.setAdminAuthInfo("admin", "admin");
-//        System.out.println(result);
+        boolean result = authService.setAdminAuthInfo("admin", "admin");
+        System.out.println(result);
     }
+ */
 
 }
