@@ -55,9 +55,8 @@ public class MessageServiceImpl implements MessageService {
             return false;
         }
 
-
         // 3. message type 별 명령어 처리 서비스 함수(Command Service) 호출
-//        commandService.processCommand(messageVO.getId());
+        commandService.processCommand(messageVO.getId());
 
         return true;
 
