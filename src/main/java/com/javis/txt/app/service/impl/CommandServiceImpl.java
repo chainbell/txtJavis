@@ -22,8 +22,7 @@ public class CommandServiceImpl implements CommandService {
         if(messageInfo == null){
             return false;
         }
-        log.info(">>>>>");
-        log.info(messageInfo.toString());
+
         // 2. message data와 message type에 대한 처리 진행
 
         // 3. message 처리 결과를 rdb에 저장
