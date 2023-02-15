@@ -10,16 +10,17 @@ import lombok.*;
 @Setter
 @ToString
 @Entity
+@Builder
 @Table(name = "AdminUser")
 @NoArgsConstructor
 public class AdminUser {
 
     @Id
     @Column(name = "id", nullable = false)
-    private String id = "";
+    private String id;
 
     @Column(name = "password", nullable = false)
-    private String password = "";
+    private String password;
 
     public AdminUser(String id, String password) {
         this.id = id;

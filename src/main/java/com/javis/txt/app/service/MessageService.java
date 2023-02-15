@@ -10,6 +10,6 @@ public interface MessageService {
     List getMessge(String authKey);
 
     // 2. 메시지 저장(발송)
-    boolean setMessage(String authKey, MessageType messageType, String message);
+    boolean setMessage(int sender, MessageType messageType, String message);
 
 }

@@ -60,7 +60,10 @@ public class AuthServiceImpl implements AuthService {
         AdminUserVO adminUserVO = AdminUserVO.builder().id(id).password(password).build();
 
         try{
-            AdminUser adminUser = new AdminUser(adminUserVO.getId(), adminUserVO.getPassword());
+            AdminUser adminUser = AdminUser.builder()
+                    .id(adminUserVO.getId())
+                    .password(adminUserVO.getPassword())
+                    .build();
             adminUserRepository.save(adminUser);
         }
         catch (Exception e){
