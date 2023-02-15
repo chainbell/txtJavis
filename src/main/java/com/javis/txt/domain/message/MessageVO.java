@@ -11,6 +11,7 @@ import org.aspectj.bridge.Message;
  * */
 
 @Setter
+@Getter
 @ToString
 public class MessageVO {
 
