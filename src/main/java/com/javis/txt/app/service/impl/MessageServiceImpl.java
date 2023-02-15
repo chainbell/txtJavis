@@ -56,7 +56,12 @@ public class MessageServiceImpl implements MessageService {
         }
 
         // 3. message type 별 명령어 처리 서비스 함수(Command Service) 호출
-        commandService.processCommand(messageVO.getId());
+        if(messageType == MessageType.MESSAGE){
+
+        }
+        else{
+            commandService.processCommand(messageVO.getId());
+        }
 
         return true;
 
