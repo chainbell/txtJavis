@@ -52,19 +52,48 @@ public class MessageServiceImpl implements MessageService {
             );
         }
         catch (Exception e){
+            e.printStackTrace();
             return false;
         }
 
-        // 3. message type 별 명령어 처리 서비스 함수(Command Service) 호출
-        if(messageType == MessageType.MESSAGE){
+        // 3. commmand/search type 별 명령어 처리 서비스 함수(Command Service) 호출
+        try{
+            if(messageType == MessageType.SEARCH){
+                commandService.processSearch(messageVO.getId());
+            }
+            else if(messageType == MessageType.COMMAND){
+                commandService.processCommand(messageVO.getId());
+            }
+            else{
 
+            }
         }
-        else{
-            commandService.processCommand(messageVO.getId());
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+        // 4. message 메시지 전송
+        try{
+            sendMessage(messageVO.getId());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
 
         return true;
 
+    }
+
+    @Override
+    public boolean sendMessage(String messageId) {
+
+        // 1. messageInfo 조회
+
+        // 2. message 발송 처리 (대화방 관리 스키마 설계 필요)
+
+        return false;
     }
 
 }

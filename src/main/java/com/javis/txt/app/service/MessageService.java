@@ -9,7 +9,10 @@ public interface MessageService {
     // 1. 메시지 조회
     List getMessge(String authKey);
 
-    // 2. 메시지 저장(발송)
+    // 2. 메시지 처리
     boolean setMessage(int sender, MessageType messageType, String message);
+
+    // 3. 메시지 전송
+    boolean sendMessage(String messageId);
 
 }
