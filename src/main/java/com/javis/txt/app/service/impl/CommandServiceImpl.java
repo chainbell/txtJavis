@@ -31,6 +31,7 @@ public class CommandServiceImpl implements CommandService {
 
         // 3. 검색 처리 진행 - 구글
 
+
         // 4. message 처리 결과를 rdb에 저장
 
         return true;
@@ -46,11 +47,12 @@ public class CommandServiceImpl implements CommandService {
         }
 
         // 2. message type 검증
-        if(!MessageType.SEARCH.name().equals(messageInfo.getType())){
+        if(!MessageType.COMMAND.name().equals(messageInfo.getType())){
             return false;
         }
 
         // 3. 명령어 처리 - 구상 중
+        
 
         // 4. message 처리 결과를 rdb에 저장
 
